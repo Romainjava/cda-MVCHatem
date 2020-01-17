@@ -76,12 +76,13 @@ function addAimer($mailU, $idR) {
     return $resultat;
 }
 
-function delAimer($idR) {
+function delAimer($mailU, $idR) {
     $resultat = false;
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("DELETE FROM aimer WHERE idR = :idR ");
+        $req = $cnx->prepare("DELETE FROM aimer WHERE idR = :idR AND mailU = :mailU");
         $req->bindValue(':idR', $idR, PDO::PARAM_INT);
+        $req->bindValue(':mailU', $mailU, PDO::PARAM_STR);
     
         $resultat = $req->execute();
     } catch (PDOException $e) {

@@ -16,21 +16,13 @@ $idR = filter_input(INPUT_GET, 'idR');
 $action = filter_input(INPUT_GET, 'action');
 $mailU = getMailULoggedOn();
 
-$unResto = getRestoByIdR($idR);
-
-$lesTypesCuisine = getTypesCuisineByIdR($idR);
-$lesPhotos = getPhotosByIdR($idR);
-$noteMoy = round(getNoteMoyenneByIdR($idR), 0);
-
-$aimer = getAimerById($mailU, $idR);
-$critiques = getCritiquerByIdR($idR);
 
 if($mailU && $idR){
-    if($action = "aimer"){      
-        delAimer($idR);
-    }else if($action = "notaimer"){
+    if($action == "aimer"){      
+        delAimer($mailU, $idR);
+    }else if($action == "notaimer"){
         addAimer($mailU,$idR);
     }
 }
-include "$racine/vue/vueDetailResto.php";
+
 header("location: ".$_SERVER["HTTP_REFERER"]);

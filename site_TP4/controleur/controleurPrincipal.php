@@ -15,6 +15,8 @@ function controleurPrincipal($action){
     $lesActions['unban'] = "c_gestionUtilisateur.php";
     $lesActions['aimer'] = "c_aimer.php";
     $lesActions['notaimer'] = "c_aimer.php";
+    $lesActions['noter'] = "c_note.php";
+    $lesActions['commenter'] = "c_note.php";
     // ici on rediriger vers le bon controler
     
     if (array_key_exists ( $action , $lesActions )){

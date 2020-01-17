@@ -1,21 +1,20 @@
-
 <h1><?= $unResto['nomR']; ?>
 
     <?php if ($aimer != false) { ?>
-        <a href="./?action=aimer&idR=<?= $unResto['idR']; ?>" ><img class="aimer" src="images/aime.png" alt="j'aime ce restaurant"></a>
+        <a href="./?action=aimer&idR=<?= $unResto['idR']; ?>"><img class="aimer" src="images/aime.png" alt="j'aime ce restaurant"></a>
     <?php } else { ?>
-        <a href="./?action=notaimer&idR=<?= $unResto['idR']; ?>" ><img class="aimer" src="images/aimepas.png" alt="je n'aime pas encore ce restaurant"></a>
+        <a href="./?action=notaimer&idR=<?= $unResto['idR']; ?>"><img class="aimer" src="images/aimepas.png" alt="je n'aime pas encore ce restaurant"></a>
     <?php } ?>
 
 </h1>
 
 <span id="note">
     <?php for ($i = 1; $i <= 5; $i++) { ?>
-        <a class="aimer" href="./?action=noter&note=<?= $i ?>&idR=<?= $unResto['idR']; ?>" >
+        <a class="aimer" href="./?action=noter&note=<?= $i ?>&idR=<?= $unResto['idR']; ?>">
             <?php if ($i <= $noteMoy) { ?>
                 <img class="note" src="images/like.png" alt="">
             <?php } else {
-                ?>
+            ?>
                 <img class="note" src="images/neutre.png" alt="line neutre">
             <?php } ?>
         </a>
@@ -23,7 +22,7 @@
 </span>
 <section>
     Cuisine <br />
-    <ul id="tagFood">		
+    <ul id="tagFood">
         <?php for ($j = 0; $j < count($lesTypesCuisine); $j++) { ?>
             <li class="tag"><span class="tag">#</span><?= $lesTypesCuisine[$j]["libelleTC"] ?></li>
         <?php } ?>
@@ -60,7 +59,7 @@
 
 <h2 id="horaires">
     Horaires
-</h2> 
+</h2>
 <?= $unResto['horairesR']; ?>
 
 
@@ -70,7 +69,7 @@
     <?php for ($i = 0; $i < count($critiques); $i++) { ?>
         <li>
             <span>
-                <?= $critiques[$i]["mailU"] ?> 
+                <?= $critiques[$i]["mailU"] ?>
                 <?php if ($critiques[$i]["mailU"] == $mailU) { ?>
                     <a href='./?action=supprimerCritique&idR=<?= $unResto['idR']; ?>'>Supprimer</a>
                 <?php } ?>
@@ -91,3 +90,7 @@
 
 </ul>
 
+<form action="./?action=commenter&amp;idR=7" method="POST">
+    <textarea id="commentaireForm" name="commentaire">toto</textarea><br>
+    <input type="submit" value="Enregistrer le commentaire">
+</form>
